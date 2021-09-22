@@ -5,7 +5,7 @@ import random
 from dotenv import load_dotenv
 
 load_dotenv()
-#print(os.getenv('DISCORD_TOKEN'))
+#psrint(os.getenv('DISCORD_TOKEN'))
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
@@ -34,8 +34,9 @@ async def on_message(message):
         'Stephane Nappo',
         (
             'If security were all that mattered, computers would never be turned on, let alone hooked into' 
-           ' a network with literally millions of potential intruders'
+           'a network with literally millions of potential intruders'
         'Stephanie Nappo',
+
         (
             'If security were all that mattered, computer would never be turned on, let alone hooked into '
             'A network with literally millions o fpotential intruders'
@@ -52,12 +53,11 @@ async def on_message(message):
         response = random.choice(security_quotes)
 
         'The number one benefit of information technology is that it empowers people to do what they want to do'
-    
+    ]
 
     if message.content == 'whats up':
         #response = random.choice(brooklyn_99_quotes)
         response = random.choice(hitchhiker_quotes)
-
         await message.channel.send(response)
 
 client.run(TOKEN)
