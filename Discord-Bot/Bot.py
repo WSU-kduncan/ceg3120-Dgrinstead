@@ -31,36 +31,33 @@ async def on_message(message):
 
     cybersecurity_quotes = [
         'Technology trust is a good thing, but control is a better one',
-<<<<<<< HEAD
         'Stephane Nappo',
         (
             'If security were all that mattered, computers would never be turned on, let alone hooked into' 
            ' a network with literally millions of potential intruders'
-=======
         'Stephanie Nappo',
         (
             'If security were all that mattered, computer would never be turned on, let alone hooked into '
             'A network with literally millions o fpotential intruders'
->>>>>>> Modifications
         ),
     ]
 
     security_quotes = [
-<<<<<<< HEAD
+
         'Security used to be an inconvenience sometimes, but now its a necessity all the time'
     ]
 
     if message.content == 'whats up':
         #response = random.choice(cybersecurity_quotes)
         response = random.choice(security_quotes)
-=======
+
         'The number one benefit of information technology is that it empowers people to do what they want to do'
-    ]
+    
 
     if message.content == 'whats up':
         #response = random.choice(brooklyn_99_quotes)
         response = random.choice(hitchhiker_quotes)
->>>>>>> Modifications
+
         await message.channel.send(response)
 
 client.run(TOKEN)
