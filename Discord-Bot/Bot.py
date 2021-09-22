@@ -34,7 +34,7 @@ async def on_message(message):
         'Stephanie Nappo',
         (
             'If security were all that mattered, computer would never be turned on, let alone hooked into '
-            'A network with literally millions o fpotential intruders'
+            'A network with literally millions of potential intruders'
         ),
     ]
 
@@ -42,9 +42,9 @@ async def on_message(message):
         'The number one benefit of information technology is that it empowers people to do what they want to do'
     ]
 
-    if message.content == 'whats up':
-        #response = random.choice(brooklyn_99_quotes)
-        response = random.choice(hitchhiker_quotes)
+    if message.content == 'hello!':
+        response = random.choice(cybersecurity_quotes)
+       # response = random.choice(security_quotes)
         await message.channel.send(response)
 
 client.run(TOKEN)
