@@ -29,25 +29,22 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
+    cybersecurity_quotes = [
+        'Technology trust is a good thing, but control is a better one',
+        'Stephanie Nappo',
         (
-            'Cool. Cool cool cool cool cool cool cool, '
-            'no doubt no doubt no doubt no doubt.'
+            'If security were all that mattered, computer would never be turned on, let alone hooked into '
+            'A network with literally millions of potential intruders'
         ),
     ]
 
-    hitchhiker_quotes = [
-        'There is an art, it says, or rather, a knack to flying. The knack lies in learning how to throw yourself at the ground and miss.',
-        'It is a mistake to think you can solve any major problems just with potatoes.',
-        'In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.',
-        'A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.',
+    security_quotes = [
+        'The number one benefit of information technology is that it empowers people to do what they want to do'
     ]
 
-    if message.content == 'towel!':
-        #response = random.choice(brooklyn_99_quotes)
-        response = random.choice(hitchhiker_quotes)
+    if message.content == 'hello!':
+        response = random.choice(cybersecurity_quotes)
+       # response = random.choice(security_quotes)
         await message.channel.send(response)
 
 client.run(TOKEN)
