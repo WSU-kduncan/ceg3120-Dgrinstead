@@ -53,7 +53,7 @@ The running instance.
 
 
 
-# This is going to be when I am instanced into the 
+## This is going to be when I am instanced into the instance actually using the name instead of the IP address 
 
 ![image](https://user-images.githubusercontent.com/59849834/137232131-98bc7d2a-2511-4f58-9cac-79b0d379441e.png)
 
