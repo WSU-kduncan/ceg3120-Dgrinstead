@@ -18,7 +18,7 @@
 
 ![image](https://user-images.githubusercontent.com/59849834/136315870-04b1f8e4-4c70-4178-9552-e95219842af1.png)
 
-A internet gateway is so that the traffic from a wokstation is routed to the outside network wihich is houw you get the webpages.
+* A internet gateway is so that the traffic from a wokstation is routed to the outside network wihich is houw you get the webpages.
 
 # Create a route table
 
