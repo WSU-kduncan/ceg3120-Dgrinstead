@@ -128,8 +128,15 @@ Resources:
 	      hostnamectl set-hostname Grinstead&& \
             apt-get update && \
             apt-get install -y \
+<<<<<<< HEAD
             apt-get install git  \
             apt-get install python3 \
             apt-get install pip3 && \
+=======
+            git  \
+            python3-dev \
+            pip3 && \
+              hostnamectl set-hostname Grinstead && \
+>>>>>>> 29f3abb0b72ebe25d1bdabff21c8a1a9d25197e7
             reboot
 
