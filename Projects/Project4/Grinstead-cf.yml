@@ -125,11 +125,11 @@ Resources:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
+	      hostnamectl set-hostname Grinstead&& \
             apt-get update && \
             apt-get install -y \
             apt-get install git  \
             apt-get install python3 \
             apt-get install pip3 && \
-              hostnamectl set-hostname Grinstead && \
             reboot
 
