@@ -101,7 +101,7 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: tcp
+        - IpProtocol: ssh
           FromPort: '22'
           ToPort: '22'
           CidrIp: 10.2.66.72/32  # Replace with home / trusted public IP
