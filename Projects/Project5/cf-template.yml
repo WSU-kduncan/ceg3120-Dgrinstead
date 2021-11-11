@@ -86,6 +86,12 @@ Resources:
     Properties:
       Domain: vpc
       InstanceId: !Ref WebServ1Instance
+  Web1IPAddress:
+    Type: 'AWS::EC2::EIP'
+    DependsOn: AttachGateway
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref WebServ2Instance
   # Create one more elastic IP for the last instance
   Lab1SecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
@@ -105,10 +111,6 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           CidrIp: 130.108.15.32/32  # Replace with home / trusted public IP
-	- IpProtocol: tcp
-	  FromPort: '22'
-	  ToPort: '22'
-          CidrIp: 0.0.0.0/0 # Allow Access from anywhere
           # Need more rules for port 80
   # This defines one instance.  Make two more instances based on this (but no elastic IP)        
   PublicUbuntuInstance:
@@ -177,7 +179,42 @@ Resources:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            # need to install apache or nginx
+            apt-get install apache2 && \
             apt-get install -y git && \
-            # give it a hostname - hostnamectl  && \
+            hostnamectl set-hostname Serv1 && \
+            reboot
+  WebServ2Instance:
+    Type: 'AWS::EC2::Instance'
+    DependsOn: AttachGateway
+    Properties:
+      ImageId: !FindInMap 
+        - AWSRegionUbuntu
+        - !Ref 'AWS::Region'
+        - !FindInMap 
+          - AWSInstanceType2Arch
+          - t2.micro
+          - Arch
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      Tags:
+        - Key: Application
+          Value: !Ref 'AWS::StackId'
+        - Key: Name
+          Value: webserv2
+      NetworkInterfaces:
+        - GroupSet:
+            - !Ref Lab1SecurityGroup
+          AssociatePublicIpAddress: 'true'
+          DeviceIndex: '0'
+          DeleteOnTermination: 'true'
+          SubnetId: !Ref Subnet
+          PrivateIpAddress: 10.0.0.23 # make sure unique to the instance
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash -xe
+            apt-get update && \
+            apt-get install apache2 && \
+            apt-get install -y git && \
+            hostnamectl set-hostname serv2 && \
             reboot
