@@ -110,7 +110,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 10.2.66.1  # Replace with home / trusted public IP
+          CidrIp: 0.0.0.0/0  # Replace with home / trusted public IP
           # Need more rules for port 80
   # This defines one instance.  Make two more instances based on this (but no elastic IP)        
   PublicUbuntuInstance:
