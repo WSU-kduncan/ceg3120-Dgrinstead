@@ -86,6 +86,12 @@ Resources:
     Properties:
       Domain: vpc
       InstanceId: !Ref WebServ1Instance
+  Web1IPAddress:
+    Type: 'AWS::EC2::EIP'
+    DependsOn: AttachGateway
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref WebServ2Instance
   # Create one more elastic IP for the last instance
   Lab1SecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
@@ -96,15 +102,15 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 10.0.0.0/24 # VPC as a whole.  EC 10.0.0.0/24
+          CidrIp: 10.0.0.0/16 # VPC as a whole.  EC 10.0.0.0/24
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
           CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: ssh
+        - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 0.0.0.0/0  # Replace with home / trusted public IP
+          CidrIp: 10.2.66.1  # Replace with home / trusted public IP
           # Need more rules for port 80
   # This defines one instance.  Make two more instances based on this (but no elastic IP)        
   PublicUbuntuInstance:
@@ -138,7 +144,7 @@ Resources:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            apt-get install haproxy && \
+           apt-get install haproxy && \
             apt-get install -y git python3 python3-pip && \
             hostnamectl set-hostname proxy && \
             reboot
@@ -173,9 +179,9 @@ Resources:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            apt-get install nginx && \
+            apt-get install apache2 && \
             apt-get install -y git && \
-            hostnamectl set-hostname serv1 && \
+            hostnamectl set-hostname Serv1 && \
             reboot
   WebServ2Instance:
     Type: 'AWS::EC2::Instance'
@@ -202,13 +208,13 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
-          PrivateIpAddress: 10.0.0.24 # make sure unique to the instance
+          PrivateIpAddress: 10.0.0.23 # make sure unique to the instance
       UserData:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            apt-get install nginx && \
+            apt-get install apache2 && \
             apt-get install -y git && \
-             hostnamectl set-hostname serv2 && \
+            hostnamectl set-hostname serv2 && \
             reboot
