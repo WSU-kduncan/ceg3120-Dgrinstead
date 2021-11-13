@@ -24,4 +24,9 @@ the instance. For example like proxy, srv1 and srv2.
 
 * To restart haproxy you want to run sudo service haproxy restart
 
-* 
+
+
+
+* To be honest Kayleigh this was a tough project for me, so i am just documenting what I have. Will do better on the
+next one
+ 
