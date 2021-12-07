@@ -18,3 +18,42 @@ within the docker file.
 * When you run the container you have to run this command
 * docker run -d --name apache1 apacheserver
 
+# Docker Hub Repo. How to Create.
+
+
+1. The first thing you want to do is make sure you have a Docker Account
+
+2. click Repositoreis at the top in between Explore and Organizations.
+
+3. Click Create Repository.
+
+4. Name your Repo and make sure it is public and add a description and then click create.
+
+# Allow DockerHub authentication Via CLI using Dockhub credentials
+
+1. Log into hub.docker.com
+
+2. Click on your username in the top right corner and select Account Settings
+
+3. Add a description for your token
+
+4. Copy the access tocken
+
+5. and then you can use the token to use instead of your credentials. But be careful this token will only be displayed once.
+
+6. When you configure github secrets It was super easy 
+
+* Go to the main page of the repo
+
+* Click settings
+
+* Click Secrets
+
+* Click New Repository Secret.
+
+* Type a name for your secret
+
+
+* Enter Value for the secret, in this case it was docker credentials, (Username) (Password)
+
+
