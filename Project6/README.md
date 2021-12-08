@@ -57,3 +57,23 @@ within the docker file.
 * Enter Value for the secret, in this case it was docker credentials, (Username) (Password)
 
 
+# How to pull the project image
+
+* First you have to clone your repo to your new EC2 instance.
+
+* And then you have to start the process of building the image on your new instance.
+
+* To start the build process you have to do these first steps
+
+1. Make sure you DockerFile is good and there are no errors
+
+2. Run docker build -t apacheserver
+
+3. docker run -d --name apache1(Name of your choice) apacheserver
+
+4. docker exec apache1 curl localhost
+
+
+5. This is how you pull, build the docker image and container and verify the steps!
+
+
